@@ -1,6 +1,6 @@
 # S3DirectUpload
 
-[![Build Status](https://travis-ci.org/waynehoover/s3_direct_upload.png)](https://travis-ci.org/waynehoover/s3_direct_upload)
+[![Build Status](https://travis-ci.org/tylerjolmstead/s3_direct_upload.png)](https://travis-ci.org/tylerjolmstead/s3_direct_upload)
 
 Easily generate a form that allows you to upload directly to Amazon S3.
 Multi file uploading supported by jquery-fileupload.
@@ -93,15 +93,15 @@ Optionally, you can also place this template in the same view for the progress b
 
 ### Example with all options
 ```ruby
-<%= s3_uploader_form callback_url: model_url, 
-                     callback_method: "POST", 
-                     callback_param: "model[image_url]", 
-                     key: "files/{timestamp}-{unique_id}-#{SecureRandom.hex}/${filename}", 
-                     key_starts_with: "files/", 
-                     acl: "public-read", 
-                     max_file_size: 50.megabytes, 
-                     id: "s3-uploader", 
-                     class: "upload-form", 
+<%= s3_uploader_form callback_url: model_url,
+                     callback_method: "POST",
+                     callback_param: "model[image_url]",
+                     key: "files/{timestamp}-{unique_id}-#{SecureRandom.hex}/${filename}",
+                     key_starts_with: "files/",
+                     acl: "public-read",
+                     max_file_size: 50.megabytes,
+                     id: "s3-uploader",
+                     class: "upload-form",
                      data: {:key => :val} do %>
   <%= file_field_tag :file, multiple: true %>
 <% end %>
