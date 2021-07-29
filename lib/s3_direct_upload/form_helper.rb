@@ -18,6 +18,7 @@ module S3DirectUpload
           bucket: options[:bucket] || S3DirectUpload.config.bucket,
           region: S3DirectUpload.config.region || "s3",
           url: S3DirectUpload.config.url,
+          utf8: '✓',
           ssl: true,
           acl: "public-read",
           expiration: 10.hours.from_now.utc.iso8601,
