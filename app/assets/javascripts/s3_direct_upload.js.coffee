@@ -115,7 +115,6 @@ $.fn.S3Uploader = (options) ->
       key = $uploadForm.data("key")
         .replace('{timestamp}', new Date().getTime())
         .replace('{unique_id}', @files[0].unique_id)
-        # .replace('{cleaned_filename}', cleaned_filename(@files[0].name))
         .replace('{extension}', @files[0].name.split('.').pop())
 
       # substitute upload timestamp and unique_id into key
@@ -144,8 +143,8 @@ $.fn.S3Uploader = (options) ->
       domain                 = $uploadForm.attr('action')
       key                    = $uploadForm.find('input[name=key]').val()
       content.filepath       = key.replace('/{filename}', '').replace('/{cleaned_filename}', '')
-      content.url            = domain + key.replace('/{filename}', encodeURIComponent(file.name))
-      content.url            = content.url.replace('/{cleaned_filename}', cleaned_filename(file.name))
+      encoded_filename       = encodeURIComponent(file.name)
+      content.url            = domain + key.replace('/{filename}', encoded_filename)
 
     content.filename         = file.name
     content.filesize         = file.size if 'size' of file
