@@ -136,15 +136,15 @@ $.fn.S3Uploader = (options) ->
 
   build_content_object = ($uploadForm, file, result) ->
     content = {}
-    # if result # Use the S3 response to set the URL to avoid character encodings bugs
-    #   # content.url            = $(result).find("Location").text()
-    #   # content.filepath       = $('<a />').attr('href', content.url)[0].pathname
+    if result # Use the S3 response to set the URL to avoid character encodings bugs
+      # content.url            = $(result).find("Location").text()
+      # content.filepath       = $('<a />').attr('href', content.url)[0].pathname
       
-    #   url                    = $(result).find("Location").text()
-    #   split_url              = $url.split('/')
-    #   content.url            = url.replace(split_url.last, encodeURIComponent(split_url.last()))
-    #   content.filepath       = $('<a />').attr('href', url)[0].pathname
-    # else # IE <= 9 retu      rn a null result object so we use the file object instead
+      url                    = $(result).find("Location").text()
+      split_url              = url.split('/')
+      content.url            = url.replace(split_url.last, encodeURIComponent(split_url.last()))
+      content.filepath       = $('<a />').attr('href', url)[0].pathname
+    else # IE <= 9 retu      rn a null result object so we use the file object instead
       domain                 = $uploadForm.attr('action')
       key                    = $uploadForm.find('input[name=key]').val()
       content.filepath       = key.replace('/{filename}', '').replace('/{cleaned_filename}', '')
