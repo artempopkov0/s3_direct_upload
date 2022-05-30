@@ -148,7 +148,7 @@ $.fn.S3Uploader = (options) ->
       domain                 = $uploadForm.attr('action')
       key                    = $uploadForm.find('input[name=key]').val()
       content.filepath       = key.replace('/{filename}', '').replace('/{cleaned_filename}', '')
-      encoded_filename       = encodeURIComponent(file.name)
+      content.url            = domain + content.filepath + '/' + encodeURIComponent(file.name)
       content.url            = domain + key.replace('/{filename}', encoded_filename)
 
     content.filename         = file.name
