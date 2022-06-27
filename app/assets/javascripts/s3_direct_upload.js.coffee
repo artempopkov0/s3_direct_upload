@@ -148,7 +148,7 @@ $.fn.S3Uploader = (options) ->
       content.url            = domain + key.replace('/{filename}', encodeURIComponent(file.name))
       content.url   
 
-    content.filename         = cleaned_filename(file.name)
+    content.filename         = "ttt"
     content.filesize         = file.size if 'size' of file
     content.lastModifiedDate = file.lastModifiedDate if 'lastModifiedDate' of file
     content.filetype         = file.type if 'type' of file
